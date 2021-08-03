@@ -22,7 +22,7 @@ public class PalindromeController {
 
     @RequestMapping(value = "is_palindrome/{str}", method= RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     @ResponseBody
-    public BooleanResponse isPalindrome(@PathVariable("str") String str) {
+    public BooleanResponse isPalindrome(@PathVariable("str") String str) throws Exception {
         BooleanResponse response = new BooleanResponse();
         response.setPalindrome(palindromeService.isPalindrome(str));
         return response;

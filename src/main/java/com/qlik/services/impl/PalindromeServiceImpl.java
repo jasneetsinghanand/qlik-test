@@ -37,7 +37,7 @@ public class PalindromeServiceImpl implements PalindromeService {
     private void validStringCheck(String str) throws InvalidStringInputException {
         // Allow only alphanumeric
         String pattern= "^[a-zA-Z0-9]*$";
-        if(!str.matches(pattern)) {
+        if(str==null || !str.matches(pattern)) {
             throw new InvalidStringInputException(str);
         }
     }

@@ -1,7 +1,7 @@
-package com.qlik;
+package com.qlik.dto;
 
 
-public class BooleanResponse {
+public class BooleanDTO {
     private boolean isPalindrome;
 
     public boolean isPalindrome() {

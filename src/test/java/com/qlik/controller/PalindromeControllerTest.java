@@ -1,6 +1,7 @@
 package com.qlik.controller;
 
 import com.qlik.controller.PalindromeController;
+import com.qlik.exceptions.InvalidStringInputException;
 import com.qlik.services.impl.PalindromeServiceImpl;
 import org.junit.Before;
 import org.junit.Test;
@@ -17,6 +18,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.context.WebApplicationContext;
 
 import java.util.HashMap;
@@ -42,11 +44,11 @@ public class PalindromeControllerTest {
 
     @Before
     public void setUp() throws Exception {
-        mockMvc = MockMvcBuilders.standaloneSetup(palindromeController).build();
+        mockMvc = MockMvcBuilders.standaloneSetup(palindromeController).setControllerAdvice(new RestAPIExceptionHandler()).build();
     }
 
     @Test
-    public void test_IsPalindrome_true() throws Exception {
+    public void testIsPalindromeTrue() throws Exception {
         when(palindromeService.isPalindrome("level")).thenReturn(true);
 
         mockMvc.perform(get("/is_palindrome/{str}", "level"))
@@ -58,7 +60,7 @@ public class PalindromeControllerTest {
     }
 
     @Test
-    public void test_IsPalindrome_false() throws Exception {
+    public void testIsPalindromeFalse() throws Exception {
         when(palindromeService.isPalindrome("noway")).thenReturn(false);
 
         mockMvc.perform(get("/is_palindrome/{str}", "noway"))
@@ -83,5 +85,14 @@ public class PalindromeControllerTest {
                 .andExpect(jsonPath("kayak", is(2)));
 
         verify(palindromeService, times(1)).palindromeCount();
+    }
+
+    @Test
+    public void testIsPalindromeBadRequest() throws Exception {
+        when(palindromeService.isPalindrome("&rtstr&")).thenThrow(InvalidStringInputException.class);
+        mockMvc.perform(get("/is_palindrome/{str}", "&rtstr&"))
+                .andDo(MockMvcResultHandlers.print())
+                .andExpect(status().isBadRequest())
+                .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE));
     }
 }

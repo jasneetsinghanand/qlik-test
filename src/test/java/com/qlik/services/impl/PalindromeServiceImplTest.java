@@ -1,5 +1,6 @@
 package com.qlik.services.impl;
 
+import com.qlik.exceptions.InvalidStringInputException;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -13,14 +14,30 @@ public class PalindromeServiceImplTest {
     public void init() {
         palindromeServiceImpl = new PalindromeServiceImpl();
     }
-    @Test
-    public void testPalindromeForNullValue(){
+
+    @Test(expected = InvalidStringInputException.class)
+    public void testPalindromeForNullValue() throws Exception {
         assertEquals(palindromeServiceImpl.isPalindrome(null), false);
     }
 
+    @Test(expected = InvalidStringInputException.class)
+    public void testPalindromeForSpecialCharacter() throws Exception {
+        palindromeServiceImpl.isPalindrome("&abhba&");
+    }
+
     @Test
-    public void testPalindromeForSpecialCharacter(){
-        assertEquals(palindromeServiceImpl.isPalindrome("&abhba&"), true);
+    public void testPalindromeTrue() throws Exception {
+        assertTrue(palindromeServiceImpl.isPalindrome("level"));
+    }
+
+    @Test
+    public void testPalindromeFalseWithCapitalCharacters() throws Exception {
+        assertFalse(palindromeServiceImpl.isPalindrome("Level"));
+    }
+
+    @Test
+    public void testPalindromeFalseSimple() throws Exception {
+        assertFalse(palindromeServiceImpl.isPalindrome("notapalindrome"));
     }
 
 }
