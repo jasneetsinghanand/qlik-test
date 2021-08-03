@@ -1,6 +1,6 @@
 package com.qlik.controller;
 
-import com.qlik.BooleanResponse;
+import com.qlik.dto.BooleanDTO;
 import com.qlik.services.PalindromeService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,8 +22,8 @@ public class PalindromeController {
 
     @RequestMapping(value = "is_palindrome/{str}", method= RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     @ResponseBody
-    public BooleanResponse isPalindrome(@PathVariable("str") String str) throws Exception {
-        BooleanResponse response = new BooleanResponse();
+    public BooleanDTO isPalindrome(@PathVariable("str") String str) throws Exception {
+        BooleanDTO response = new BooleanDTO();
         response.setPalindrome(palindromeService.isPalindrome(str));
         return response;
     }

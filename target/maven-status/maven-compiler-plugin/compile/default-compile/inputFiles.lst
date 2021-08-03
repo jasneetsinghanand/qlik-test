@@ -1,4 +1,7 @@
-/Users/jasneetsingh/IdeaProjects/palindromerestservice/src/main/java/com/qlik/PalindromeController.java
+/Users/jasneetsingh/IdeaProjects/palindromerestservice/src/main/java/com/qlik/controller/PalindromeController.java
+/Users/jasneetsingh/IdeaProjects/palindromerestservice/src/main/java/com/qlik/dto/BooleanDTO.java
+/Users/jasneetsingh/IdeaProjects/palindromerestservice/src/main/java/com/qlik/controller/RestAPIExceptionHandler.java
 /Users/jasneetsingh/IdeaProjects/palindromerestservice/src/main/java/com/qlik/ApplicationLoader.java
+/Users/jasneetsingh/IdeaProjects/palindromerestservice/src/main/java/com/qlik/exceptions/InvalidStringInputException.java
 /Users/jasneetsingh/IdeaProjects/palindromerestservice/src/main/java/com/qlik/services/impl/PalindromeServiceImpl.java
 /Users/jasneetsingh/IdeaProjects/palindromerestservice/src/main/java/com/qlik/services/PalindromeService.java

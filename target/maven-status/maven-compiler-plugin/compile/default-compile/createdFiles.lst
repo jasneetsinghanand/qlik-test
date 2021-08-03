@@ -1,4 +1,8 @@
-com/qlik/PalindromeController.class
+com/qlik/services/PalindromeService.class
+com/qlik/controller/RestAPIExceptionHandler.class
+com/qlik/exceptions/InvalidStringInputException.class
+com/qlik/controller/RestAPIExceptionHandler$JsonResponse.class
+com/qlik/dto/BooleanDTO.class
 com/qlik/services/impl/PalindromeServiceImpl.class
 com/qlik/ApplicationLoader.class
-com/qlik/services/PalindromeService.class
+com/qlik/controller/PalindromeController.class
