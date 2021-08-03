@@ -1,0 +1,4 @@
+com/qlik/PalindromeController.class
+com/qlik/services/impl/PalindromeServiceImpl.class
+com/qlik/ApplicationLoader.class
+com/qlik/services/PalindromeService.class
