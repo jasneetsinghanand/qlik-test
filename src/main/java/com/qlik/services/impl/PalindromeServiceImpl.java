@@ -11,8 +11,7 @@ import java.util.Map;
 public class PalindromeServiceImpl implements PalindromeService {
 
     public static Map<String, Integer> palindromeFreq = new HashMap<String,Integer>();
-
-    /** This method is called by controller to */
+    
     @Override
     public boolean isPalindrome(String str) throws Exception, InvalidStringInputException {
         validStringCheck(str);
