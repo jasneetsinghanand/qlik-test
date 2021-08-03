@@ -3,7 +3,13 @@ package com.qlik.services.impl;
 import com.qlik.exceptions.InvalidStringInputException;
 import org.junit.Before;
 import org.junit.Test;
+
+import java.util.HashMap;
+import java.util.Map;
+
 import static org.junit.Assert.*;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
 
 
 public class PalindromeServiceImplTest {
@@ -40,4 +46,16 @@ public class PalindromeServiceImplTest {
         assertFalse(palindromeServiceImpl.isPalindrome("notapalindrome"));
     }
 
+    @Test
+    public void testPalindromeCounts() throws Exception{
+        palindromeServiceImpl.isPalindrome("level");
+        palindromeServiceImpl.isPalindrome("level");
+        palindromeServiceImpl.isPalindrome("level");
+        palindromeServiceImpl.isPalindrome("kayak");
+        palindromeServiceImpl.isPalindrome("kayak");
+        Map<String,Integer> mockRes = new HashMap<>();
+        mockRes.put("level", 3);
+        mockRes.put("kayak", 2);
+        assertTrue(palindromeServiceImpl.palindromeCount().equals(mockRes));
+    }
 }
